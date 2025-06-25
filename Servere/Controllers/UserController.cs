@@ -18,9 +18,14 @@ namespace Servere.Controllers
 
         // POST api/users
         [HttpPost]
-        public ActionResult Create(Users user)
+        public async Task<ActionResult> Create([FromBody] Users user)
         {
-            _blUserService.Create(user);
+            // בדוק אם כבר קיים משתמש עם אותו טלפון
+            var existing = await _blUserService.FindByPhoneAsync(user.Phone);
+            if (existing != null)
+                return Conflict("Phone already exists");
+
+            await _blUserService.Create(user);
             return Ok();
         }
 

@@ -61,5 +61,9 @@ namespace Dal.Repository
                 throw new Exception($"User with ID {item.Id} not found or not updated.");
             }
         }
+        public async Task<Users> FindByPhoneAsync(string phone)
+        {
+            return await _collection.Find(u => u.Phone == phone).FirstOrDefaultAsync();
+        }
     }
 }

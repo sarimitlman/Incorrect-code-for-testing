@@ -9,6 +9,6 @@ namespace Dal.Api
 {
     public interface IUsers : ICrud<Users>
     {
-        
+        Task<Users> FindByPhoneAsync(string phone);
     }
 }

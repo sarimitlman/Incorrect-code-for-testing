@@ -1,6 +1,7 @@
 ﻿using BL.Api;
 using Dal.Api;
 using Dal.Models;
+using Dal.Repository;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,11 @@ namespace BL.Services
         }
 
         // Create: יצירת משתמש חדש
-        public void Create(Users user)
+        public async Task Create(Users user)
         {
             try
             {
-                userRepository.Create(user);
+                await userRepository.Create(user);
             }
             catch (Exception ex)
             {
@@ -51,8 +52,11 @@ namespace BL.Services
         {
             return await userRepository.Read();
         }
+        public async Task<Users> FindByPhoneAsync(string phone)
+        {
+            return await userRepository.FindByPhoneAsync(phone);
+        }
 
-     
 
 
 

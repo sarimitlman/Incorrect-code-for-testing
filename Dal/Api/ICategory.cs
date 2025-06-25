@@ -7,7 +7,7 @@ using Dal.Models;
 
 namespace Dal.Api
 {
-    public interface ICategory:ICrud<Categories>
+    public interface ICategory : ICrud<Categories>
     {
        
     }

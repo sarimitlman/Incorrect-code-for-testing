@@ -1,5 +1,4 @@
 ﻿using BL.Api;
-using BL.Services;
 using Dal.Models;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -19,16 +18,13 @@ namespace Servere.Controllers
             _blSubCategory = blSubCategory;
         }
 
+        // GET api/category
         [HttpGet]
-        public async Task<ActionResult<List<SubCategory>>> GetSubCategoriesByCategory([FromQuery] string categoryId)
+        public async Task<ActionResult<List<SubCategory>>> GetSubCategoriesByCategory([FromQuery] string categoryName)
         {
             try
             {
-                if (!ObjectId.TryParse(categoryId, out ObjectId objectId))
-                    return BadRequest("Invalid categoryId");
-
-                var result = await _blSubCategory.GetSubCategoriesByCategoryIdAsync(objectId);
-
+                var result = await _blSubCategory.GetCategoryByNameAsync(categoryName);  // שולחים את שם הקטגוריה
                 return Ok(result);
             }
             catch (Exception ex)

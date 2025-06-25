@@ -13,5 +13,6 @@ namespace BL.Api
        
         public Task<Categories> GetCategoryByIdAsync(string id);
         public Task<List<Categories>> GetAll();
+
     }
 }

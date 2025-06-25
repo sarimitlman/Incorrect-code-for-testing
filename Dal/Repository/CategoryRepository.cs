@@ -43,7 +43,7 @@ namespace Dal.Repository
         // Read: מחזיר את כל הקטגוריות
         public async Task<List<Categories>> Read()
         {
-            return await _collection.Find(_ => true).ToListAsync(); // מחזיר את כל הקטגוריות
+            return await _collection.Find(_ => true).ToListAsync();
         }
 
         // Update: מעדכן קטגוריה

@@ -10,9 +10,9 @@ namespace BL.Api
 {
     public interface IBLUser
     {
-        public void Create(Users user);
-        public Task<Users> GetUserByIdAsync(string id);
-        public Task<List<Users>> GetAll();
-        
+        Task<Users> GetUserByIdAsync(string id);
+        Task<List<Users>> GetAll();
+        Task<Users> FindByPhoneAsync(string phone); // הוסף שורה זו!
+        Task Create(Users user); // ודא שיש גם את זה
     }
 }

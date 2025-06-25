@@ -31,11 +31,17 @@ namespace Servere.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePrompt([FromBody] PromptRequest promptRequest)
+        public async Task<IActionResult> CreatePrompt([FromBody] PromptDto dto)
         {
-            await _promptService.CreateResponse(promptRequest);
-            return Ok(promptRequest);  
+            // כאן תשלב את הקריאה ל-AI, שמירה ב-DB והחזרת תשובה
+            // לדוגמה:
+            var aiResponse = "This is a mock AI response"; // כאן תשלב את OpenAI בעתיד
+                                                           // שמור את הפרטים ב-DB אם צריך
+            return Ok(new { response = aiResponse });
         }
-
     }
+
+
 }
+
+

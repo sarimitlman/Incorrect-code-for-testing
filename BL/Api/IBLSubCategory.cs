@@ -12,7 +12,7 @@ namespace BL.Api
 
     public interface IBLSubCategory
     {
-        Task<List<SubCategory>> GetSubCategoriesByCategoryIdAsync(ObjectId categoryId);
+        Task<List<SubCategory>> GetCategoryByNameAsync(string categoryName);
     }
 
 }

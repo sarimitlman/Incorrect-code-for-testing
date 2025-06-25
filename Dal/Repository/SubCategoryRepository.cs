@@ -4,7 +4,6 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Dal.Repository
@@ -16,24 +15,22 @@ namespace Dal.Repository
         public SubCategoryRepository(IMongoClient mongoClient)
         {
             var database = mongoClient.GetDatabase("AiLearningDb");
-            _collection = database.GetCollection<SubCategory>("SubCategory");
+            _collection = database.GetCollection<SubCategory>("SubCategories"); 
         }
 
         // Create: מוסיף תת-קטגוריה חדשה
         public async Task Create(SubCategory item)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
-            await _collection.InsertOneAsync(item); // מוסיף את תת-הקטגוריה לבסיס הנתונים
+            await _collection.InsertOneAsync(item);
         }
 
-        // Delete: מוחק תת-קטגוריה לפי ה-Id שלה
+        // Delete: מוחק תת-קטגוריה
         public async Task Delete(SubCategory item)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
-
             var filter = Builders<SubCategory>.Filter.Eq(sc => sc.Id, item.Id);
             var result = await _collection.DeleteOneAsync(filter);
-
             if (result.DeletedCount == 0)
             {
                 throw new Exception($"SubCategory with ID {item.Id} not found.");
@@ -43,25 +40,22 @@ namespace Dal.Repository
         // Read: מחזיר את כל תתי-הקטגוריות
         public async Task<List<SubCategory>> Read()
         {
-            return await _collection.Find(_ => true).ToListAsync(); // מחזיר את כל תתי-הקטגוריות
+            return await _collection.Find(_ => true).ToListAsync();
         }
 
-        // Update: מעדכן תת-קטגוריה לפי ה-Id שלה
+        // Update: מעדכן תת-קטגוריה
         public async Task UpDate(SubCategory item)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
-
             var filter = Builders<SubCategory>.Filter.Eq(sc => sc.Id, item.Id);
-            var update = Builders<SubCategory>.Update
-                .Set(sc => sc.Name, item.Name) // עדכון שם תת-הקטגוריה
-                .Set(sc => sc.CategoryId, item.CategoryId); // עדכון ה-CategoryId אם יש שינוי
-
+            var update = Builders<SubCategory>.Update.Set(sc => sc.Name, item.Name);
             var result = await _collection.UpdateOneAsync(filter, update);
-
             if (result.ModifiedCount == 0)
             {
                 throw new Exception($"SubCategory with ID {item.Id} not found or not updated.");
             }
         }
+
+
     }
 }
