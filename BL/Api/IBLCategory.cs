@@ -11,7 +11,7 @@ namespace BL.Api
     public interface IBLCategory
     {
        
-        public Task<Categories> GetCategoryByIdAsync(ObjectId id);
+        public Task<Categories> GetCategoryByIdAsync(string id);
         public Task<List<Categories>> GetAll();
     }
 }

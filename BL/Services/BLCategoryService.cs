@@ -23,7 +23,7 @@ namespace BL.Services
 
           
             // GetCategoryById: קבלת קטגוריה לפי ID
-            public async Task<Categories> GetCategoryByIdAsync(ObjectId id)
+            public async Task<Categories> GetCategoryByIdAsync(string id)
             {
                 var categories = await categoryRepository.Read();
                 var category = categories.FirstOrDefault(c => c.Id == id);

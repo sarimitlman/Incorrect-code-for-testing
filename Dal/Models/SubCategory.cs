@@ -12,7 +12,7 @@ namespace Dal.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public ObjectId Id { get; set; }
+        public string Id { get; set; }
 
         [BsonElement("name")]
         public string Name { get; set; }

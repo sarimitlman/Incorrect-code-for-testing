@@ -10,7 +10,7 @@ namespace BL.Dtos
 {
     public class UserWithPromptsDto
     {
-        public ObjectId Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public List<Prompts> Prompts { get; set; }

@@ -16,7 +16,7 @@ namespace Dal.Repository
         public CategoryRepository(IMongoClient mongoClient)
         {
             var database = mongoClient.GetDatabase("AiLearningDb");
-            _collection = database.GetCollection<Categories>("Category");
+            _collection = database.GetCollection<Categories>("categories");
         }
 
         // Create: מוסיף קטגוריה חדשה

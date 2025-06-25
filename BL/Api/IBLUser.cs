@@ -11,7 +11,7 @@ namespace BL.Api
     public interface IBLUser
     {
         public void Create(Users user);
-        public Task<Users> GetUserByIdAsync(ObjectId id);
+        public Task<Users> GetUserByIdAsync(string id);
         public Task<List<Users>> GetAll();
         
     }

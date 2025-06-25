@@ -33,7 +33,7 @@ namespace BL.Services
         }
 
         // GetUserById: קבלת משתמש לפי ID
-        public async Task<Users> GetUserByIdAsync(ObjectId id)
+        public async Task<Users> GetUserByIdAsync(string id)
         {
             var users = await userRepository.Read();
             var user = users.FirstOrDefault(u => u.Id == id);

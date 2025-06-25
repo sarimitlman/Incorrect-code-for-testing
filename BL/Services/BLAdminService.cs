@@ -30,7 +30,7 @@ namespace BL.Services
                 Name = user.Name,
                 Phone = user.Phone,
                 Prompts = prompts
-                    .Where(p => p.UserId == user.Id) // ObjectId comparison remains unchanged
+                   .Where(p => p.UserId.ToString() == user.Id) 
                     .ToList()
             }).ToList();
 

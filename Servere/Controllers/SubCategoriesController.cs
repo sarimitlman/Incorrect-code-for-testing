@@ -10,14 +10,16 @@ namespace Servere.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SubCategoryController : ControllerBase
+    public class SubCategoriesController : ControllerBase
     {
         private readonly IBLSubCategory _blSubCategory;
 
-        public SubCategoryController(IBLSubCategory blSubCategory)
+        public SubCategoriesController(IBLSubCategory blSubCategory)
         {
             _blSubCategory = blSubCategory;
         }
+
+        [HttpGet]
         public async Task<ActionResult<List<SubCategory>>> GetSubCategoriesByCategory([FromQuery] string categoryId)
         {
             try
@@ -36,4 +38,3 @@ namespace Servere.Controllers
         }
     }
 }
-

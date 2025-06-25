@@ -26,7 +26,7 @@ namespace Servere.Controllers
 
         // GET api/users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUserByIdAsync(ObjectId id)
+        public async Task<ActionResult<Users>> GetUserByIdAsync(string id)
         {
             var user = await _blUserService.GetUserByIdAsync(id);
             if (user == null)
