@@ -12,3 +12,11 @@ obj/
 
 # Others
 *.cache
+# הגדרות סודיות
+appsettings.Development.json
+appsettings.json
+secrets.json
+
+# קבצי סביבה
+.env
+.env.*
